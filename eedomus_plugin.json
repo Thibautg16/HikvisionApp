@@ -1,32 +1,32 @@
 {
     "plugin_id": "hikvisionapps",
-    "name_fr": "Hikvision Apps",
+    "name_fr": "Hikvision App",
     "icon": "camera.png",
-    "version": "1.0",
+    "version": "1.1",
     "creation_date": "2017-09-30",
-    "modification_date": "2017-09-30",
-    "author": "@Thibautg16",
-    "description_fr": "Contrôlez votre caméra Hikvision à partir de son API",
-    "description_en": "Control your Hikvision camera from its API",
-    "forum_link": "",
+    "modification_date": "2017-10-09",
+    "author": "<a href='https://twitter.com/Thibautg16' target='_blank'>@Thibautg16</a> / <a href='http://thibaut.ovh/' target='_blank'>thibaut.ovh</a>",
+    "description_fr": "Contrôlez votre <a href='http://www.hikvision.com/fr/' target='_blank'>caméra Hikvision</a> à partir de son API",
+    "description_en": "Control your <a href='http://www.hikvision.com/en/' target='_blank'>Hikvision camera</a> from its API",
+    "forum_link": "http://forum.eedomus.com/viewtopic.php?f=50&t=5983",
     "parameters":
         [
             {
                 "parameter": "ip",
-                "desctiption": "Adresse IP de votre caméra",
+                "description": "Adresse IP de votre caméra",
                 "xtype": "textfield",
                 "default_value": "192.168.0.10",
                 "field": "width:130, allowBlank:false, maskRe:/[0-9.]/, regex:/^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$/, regexText:'Adresse IP invalide [0-255].[0-255].[0-255].[0-255]'"
             },
             {
                 "parameter": "login",
-                "desctiption": "Login de votre caméra",
+                "description": "Login de votre caméra",
                 "xtype": "textfield",
                 "field": "width:130, allowBlank:false"
             },
             {
                 "parameter": "password",
-                "desctiption": "Password de votre caméra",
+                "description": "Password de votre caméra",
                 "xtype": "textfield",
                 "field": "width:130, allowBlank:false"
             }
@@ -59,7 +59,7 @@
                             "icon": "camera_on.png",
                             "http_url": "http://[VAR2]:[VAR3]@[VAR1]/MotionDetection/1",
                             "http_type": "PUT",
-                            "http_params": ""
+                            "http_params": "<MotionDetection version=\"1.0\" xmlns=\"http://www.hikvision.com/ver10/XMLSchema\"><id>1</id><enabled>true</enabled><regionType>grid</regionType><Grid><rowGranularity>18</rowGranularity><columnGranularity>22</columnGranularity></Grid><MotionDetectionRegionList><sensitivityLevel>2</sensitivityLevel></MotionDetectionRegionList></MotionDetection>"
                         },
                         {
                             "value" : "2",
@@ -67,7 +67,7 @@
                             "icon": "camera_off.png",
                             "http_url": "http://[VAR2]:[VAR3]@[VAR1]/MotionDetection/1",
                             "http_type": "PUT",
-                            "http_params": ""
+                            "http_params": "<MotionDetection version=\"1.0\" xmlns=\"http://www.hikvision.com/ver10/XMLSchema\"><id>1</id><enabled>false</enabled><regionType>grid</regionType><Grid><rowGranularity>18</rowGranularity><columnGranularity>22</columnGranularity></Grid><MotionDetectionRegionList><sensitivityLevel>2</sensitivityLevel></MotionDetectionRegionList></MotionDetection>"
                         }
                     ]
             }
