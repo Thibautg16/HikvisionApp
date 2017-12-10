@@ -1,11 +1,11 @@
 {
-    "plugin_id": "hikvisionapps",
+    "plugin_id": "hikvisionapp",
     "name_fr": "Hikvision App",
-    "icon": "camera.png",
-    "version": "1.1",
+    "icon": "camera_app.png",
+    "version": "1.2",
     "creation_date": "2017-09-30",
-    "modification_date": "2017-10-09",
-    "author": "<a href='https://twitter.com/Thibautg16' target='_blank'>@Thibautg16</a> / <a href='http://thibaut.ovh/' target='_blank'>thibaut.ovh</a>",
+    "modification_date": "2017-12-10",
+    "author": "<a href='https://twitter.com/Thibautg16' target='_blank'>@Thibautg16</a> / <a href='https://github.com/Thibautg16/HikvisionApp' target='_blank'> GitHub </a>",
     "description_fr": "Contrôlez votre <a href='http://www.hikvision.com/fr/' target='_blank'>caméra Hikvision</a> à partir de son API",
     "description_en": "Control your <a href='http://www.hikvision.com/en/' target='_blank'>Hikvision camera</a> from its API",
     "forum_link": "http://forum.eedomus.com/viewtopic.php?f=50&t=5983",
@@ -29,16 +29,31 @@
                 "description": "Password de votre caméra",
                 "xtype": "textfield",
                 "field": "width:130, allowBlank:false"
+            },
+            {
+                "parameter": "combo_detection_mouvement",
+                "description": "Activation/Désactivation détection de mouvement :",
+                "xtype": "combo",
+                "default_value": 0,
+                "field": "width:110, allowBlank:false, store:[[0, 'Non'], [1, 'Oui']], editable: false, shadow: true, triggerAction: 'all', typeAhead:true"
+            },
+            {
+                "parameter": "combo_detection_intrusion",
+                "description": "Activation/Désactivation détection d'intrusion :",
+                "xtype": "combo",
+                "default_value": 0,
+                "field": "width:110, allowBlank:false, store:[[0, 'Non'], [1, 'Oui']], editable: false, shadow: true, triggerAction: 'all', typeAhead:true"
             }
         ],
     "devices":
         [
             {
-                "device_id": "hikaction",
+                "device_id": "detection_mouvement",
+                "create":"plugin.parameters.combo_detection_mouvement",
                 "module_id": "41",
                 "type": "http",
-                "name_fr": "plugin.name",
-                "icon": "",
+                "name_fr": "plugin.name - Detection mouvement",
+                "icon": "camera_app.png",
                 "utilisation_id":"43",
                 "parameters":
                     {
@@ -54,20 +69,60 @@
                 "values":
                     [
                         {
+                            "value" : "0",
+                            "description": "Détection désactivée",
+                            "icon": "camera_off.png",
+                            "http_url": "http://[VAR2]:[VAR3]@[VAR1]/MotionDetection/1",
+                            "http_type": "PUT",
+                            "http_params": "<MotionDetection version=\"1.0\" xmlns=\"http://www.hikvision.com/ver10/XMLSchema\"><id>1</id><enabled>false</enabled><regionType>grid</regionType><Grid><rowGranularity>18</rowGranularity><columnGranularity>22</columnGranularity></Grid><MotionDetectionRegionList><sensitivityLevel>2</sensitivityLevel></MotionDetectionRegionList></MotionDetection>"
+                        }, 
+                        {
                             "value" : "1",
                             "description": "Détection activée",
                             "icon": "camera_on.png",
                             "http_url": "http://[VAR2]:[VAR3]@[VAR1]/MotionDetection/1",
                             "http_type": "PUT",
                             "http_params": "<MotionDetection version=\"1.0\" xmlns=\"http://www.hikvision.com/ver10/XMLSchema\"><id>1</id><enabled>true</enabled><regionType>grid</regionType><Grid><rowGranularity>18</rowGranularity><columnGranularity>22</columnGranularity></Grid><MotionDetectionRegionList><sensitivityLevel>2</sensitivityLevel></MotionDetectionRegionList></MotionDetection>"
-                        },
+                        }
+                    ]
+            },
+            {
+                "device_id": "detection_intrusion",
+                "create":"plugin.parameters.combo_detection_intrusion",
+                "parent_id": "detection_mouvement",
+                "module_id": "41",
+                "type": "http",
+                "name_fr": "plugin.name - Detection intrusion",
+                "icon": "camera_app.png",
+                "utilisation_id":"43",
+                "parameters":
+                    {
+				        "VAR1": "plugin.parameters.ip",
+				        "VAR2": "plugin.parameters.login",
+                        "VAR3": "plugin.parameters.password",
+                        "value_type": "list",
+                        "ignore_errors": 3,
+                        "RAW_URL": "",
+                        "RAW_XPATH": "",
+                        "POLLING": "0"
+                    },
+                "values":
+                    [
                         {
-                            "value" : "2",
+                            "value" : "0",
                             "description": "Détection désactivée",
                             "icon": "camera_off.png",
-                            "http_url": "http://[VAR2]:[VAR3]@[VAR1]/MotionDetection/1",
+                            "http_url": "http://[VAR2]:[VAR3]@[VAR1]/ISAPI/Smart/FieldDetection/1",
                             "http_type": "PUT",
-                            "http_params": "<MotionDetection version=\"1.0\" xmlns=\"http://www.hikvision.com/ver10/XMLSchema\"><id>1</id><enabled>false</enabled><regionType>grid</regionType><Grid><rowGranularity>18</rowGranularity><columnGranularity>22</columnGranularity></Grid><MotionDetectionRegionList><sensitivityLevel>2</sensitivityLevel></MotionDetectionRegionList></MotionDetection>"
+                            "http_params": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<FieldDetection version=\"2.0\" xmlns=\"http://www.hikvision.com/ver20/XMLSchema\">\n<id>1</id><enabled>false</enabled><enableDualVca>false</enableDualVca><startTriggerTime>500</startTriggerTime><endTriggerTime>500</endTriggerTime><normalizedScreenSize><normalizedScreenWidth>1000</normalizedScreenWidth><normalizedScreenHeight>1000</normalizedScreenHeight></normalizedScreenSize><FieldDetectionRegionList size=\"1\"><FieldDetectionRegion version=\"2.0\" xmlns=\"http://www.hikvision.com/ver20/XMLSchema\"><id>1</id><enabled>false</enabled><sensitivityLevel>50</sensitivityLevel><timeThreshold>0</timeThreshold><objectOccupation>1</objectOccupation><RegionCoordinatesList xmlns=\"\"/></FieldDetectionRegion></FieldDetectionRegionList><isSupportMultiScene>false</isSupportMultiScene></FieldDetection>"
+                        },                        
+                        {
+                            "value" : "1",
+                            "description": "Détection activée",
+                            "icon": "camera_on.png",
+                            "http_url": "http://[VAR2]:[VAR3]@[VAR1]/ISAPI/Smart/FieldDetection/1",
+                            "http_type": "PUT",
+                            "http_params": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FieldDetection version=\"2.0\" xmlns=\"http://www.hikvision.com/ver20/XMLSchema\"><id>1</id><enabled>true</enabled><enableDualVca>false</enableDualVca><startTriggerTime>500</startTriggerTime><endTriggerTime>500</endTriggerTime><normalizedScreenSize><normalizedScreenWidth>1000</normalizedScreenWidth><normalizedScreenHeight>1000</normalizedScreenHeight></normalizedScreenSize><FieldDetectionRegionList size=\"1\"><FieldDetectionRegion version=\"2.0\" xmlns=\"http://www.hikvision.com/ver20/XMLSchema\"><id>1</id><enabled>false</enabled><sensitivityLevel>50</sensitivityLevel><timeThreshold>0</timeThreshold><objectOccupation>1</objectOccupation><RegionCoordinatesList xmlns=\"\"/></FieldDetectionRegion></FieldDetectionRegionList><isSupportMultiScene>false</isSupportMultiScene></FieldDetection>"
                         }
                     ]
             }
