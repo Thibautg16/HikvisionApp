@@ -13,13 +13,14 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un prériphérique" / "Store
 ![2017-12-10_15h40_04](https://user-images.githubusercontent.com/4451322/33805943-969e7078-ddc0-11e7-8b06-0250a2a7f6be.png)
 
 Vous devez renseigner les différents champs:
-[Optionnel] - Nom personnalisé : personnalisation du nom de votre périphérique
-[Obligatoire] - Pièce : vous devez définir dans qu'elle pièce se trouve votre caméra
-[Obligatoire] - Adresse IP de votre caméra
-[Obligatoire] - Identifiant de connexion à votre caméra
-[Obligatoire] - Mot de passe associé à votre identifiant
-[Optionnel] - Activation/Désactivation de mouvement : choisissez si vous souhaitez créer ce module
-[Optionnel] - Activation/Désactivation d'intrusion : choisissez si vous souhaitez créer ce module
+
+* [Optionnel] - Nom personnalisé : personnalisation du nom de votre périphérique
+* [Obligatoire] - Pièce : vous devez définir dans qu'elle pièce se trouve votre caméra
+* [Obligatoire] - Adresse IP de votre caméra
+* [Obligatoire] - Identifiant de connexion à votre caméra
+* [Obligatoire] - Mot de passe associé à votre identifiant
+* [Optionnel] - Activation/Désactivation de mouvement : choisissez si vous souhaitez créer ce module
+* [Optionnel] - Activation/Désactivation d'intrusion : choisissez si vous souhaitez créer ce module
 
 Plusieurs modules sont créés sur votre box eedomus, suivant les canaux choisis:
 
