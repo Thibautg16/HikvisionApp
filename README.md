@@ -1,28 +1,28 @@
 # HikvisionApp
-Gestion d'une [camÃ©ra Hikvision](http://www.hikvision.com/fr/) Ã  partir de votre box eedomus
+Gestion d'une [caméra Hikvision](http://www.hikvision.com/fr/) à partir de votre box eedomus
 
-Script crÃ©Ã© par [@Thibautg16](https://twitter.com/Thibautg16/)
+Script créé par [@Thibautg16](https://twitter.com/Thibautg16/)
 
-## PrÃ©requis 
-Vous devez au prÃ©alable disposer d'une camÃ©ra Hikvision installÃ© et configurÃ©.
+## Prérequis 
+Vous devez au préalable disposer d'une caméra Hikvision installé et configuré.
 
-## CommenÃ§ons
-### Ajout du pÃ©riphÃ©rique 
-Cliquez sur "Configuration" / "Ajouter ou supprimer un prÃ©riphÃ©rique" / "Store eedomus" / "Hikvision App" / "CrÃ©er"
+## Commençons
+### Ajout du périphérique 
+Cliquez sur "Configuration" / "Ajouter ou supprimer un prériphérique" / "Store eedomus" / "Hikvision App" / "Créer"
 
 ![2017-12-10_15h40_04](https://user-images.githubusercontent.com/4451322/33805943-969e7078-ddc0-11e7-8b06-0250a2a7f6be.png)
 
-Vous devez renseigner les diffÃ©rents champs:
+Vous devez renseigner les différents champs:
 
-* [Optionnel] - Nom personnalisÃ© : personnalisation du nom de votre pÃ©riphÃ©rique
-* [Obligatoire] - PiÃ¨ce : vous devez dÃ©finir dans qu'elle piÃ¨ce se trouve votre camÃ©ra
-* [Obligatoire] - Adresse IP de votre camÃ©ra
-* [Obligatoire] - Identifiant de connexion Ã  votre camÃ©ra
-* [Obligatoire] - Mot de passe associÃ© Ã  votre identifiant
-* [Optionnel] - Activation/DÃ©sactivation de mouvement : choisissez si vous souhaitez crÃ©er ce module
-* [Optionnel] - Activation/DÃ©sactivation d'intrusion : choisissez si vous souhaitez crÃ©er ce module
+* [Optionnel] - Nom personnalisé : personnalisation du nom de votre périphérique
+* [Obligatoire] - Pièce : vous devez définir dans qu'elle pièce se trouve votre caméra
+* [Obligatoire] - Adresse IP de votre caméra
+* [Obligatoire] - Identifiant de connexion à votre caméra
+* [Obligatoire] - Mot de passe associé à votre identifiant
+* [Optionnel] - Activation/Désactivation de mouvement : choisissez si vous souhaitez créer ce module
+* [Optionnel] - Activation/Désactivation d'intrusion : choisissez si vous souhaitez créer ce module
 
-Plusieurs modules sont crÃ©Ã©s sur votre box eedomus, suivant les canaux choisis:
+Plusieurs modules sont créés sur votre box eedomus, suivant les canaux choisis:
 
 ![2017-12-10_15h48_39](https://user-images.githubusercontent.com/4451322/33806009-9b7e5d1e-ddc1-11e7-98d2-52c7251d5dd9.png)
 
