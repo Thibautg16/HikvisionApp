@@ -1,5 +1,5 @@
 {
-    "plugin_id": "hikvisionapp",
+    "plugin_id": "hikvision",
     "name_fr": "Hikvision App",
     "icon": "camera_app.png",
     "version": "1.2",
